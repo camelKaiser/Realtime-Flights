@@ -16,6 +16,7 @@ Thanks to:
 
 ##Installation##
 To run on a local server, simply
+
 1. Download the repository
 2. Navigate to the directory through the terminal
 3. Enter 'python -m SimpleHTTPServer 8000' (You may need to change the port if you've already got something there)
