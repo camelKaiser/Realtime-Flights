@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+Access-Control-Allow-Origin: *
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+		console.log("fuark");
+		console.log("hehe");
+        $.getJSON("https://crossorigin.me/https://data.flightradar24.com/zones/fcgi/feed.js?", function(result){
+            //$.each(result, function(i, field){
+			var time = result.time;
+			var counter = 0;
+			//ar states = result.states;
+			for( var key in result) {
+				
+				if (counter > 2) {
+					$("div").append(key + "<br>");
+					$("div").append("lat " + result[key][1] + " long " + result[key][2] + "<br>");
+					console.log("reach")
+				} else {
+					counter = counter + 1;
+				}
+			}
+			
+		    
+				
+				
+            //});
+        });
+    });
+});
+</script>
+</head>
+<body>
+
+<button>Get JSON data</button>
+
+<div></div>
+
+</body>
+</html>

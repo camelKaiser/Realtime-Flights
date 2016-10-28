@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en_US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Realtime WebGL Globe Example</title>
+    <meta name="description" content="A webgl earth making it easy to add shapes at coordinates in realtime.">
+    <style>
+
+      body {
+        padding: 0;
+        margin: 0;
+        background: black;
+      }
+
+    </style>
+  </head>
+  <body>
+    <main>
+      <div id='globe'></div>
+    </main>
+      
+    </script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.min.js'></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js'></script>
+    <script src='globe.js'></script>
+    <script>
+
+      var div = document.getElementById('globe');
+      var urls = {
+        earth: 'img/world.jpg',
+        bump: 'img/bump.jpg',
+        specular: 'img/specular.jpg',
+      }
+
+      // create a globe
+      var globe = new Globe(div, urls);
+
+      // start it
+      globe.init();
+  
+    var trackIss = function() {
+		
+      //get data from ISS tracking api
+      $.getJSON("https://crossorigin.me/https://data.flightradar24.com/zones/fcgi/feed.js?", function(coords) {
+        globe.removeAllBlocks();
+		console.log("fuarkkk");
+		var counter = 0;
+		for (var key in coords) {
+			console.log("fuarkkk22222");
+			if (counter > 2) {
+				var latitude = coords[key][1];
+				var longitude = coords[key][2];
+				console.log(latitude + " " + longitude);
+				
+				var data = {
+					color: '#FF0000',
+					size: 3,
+					lat: coords[key][1],
+					lon: coords[key][2],
+					};
+				
+				globe.addBlock(data);
+				console.log("added data");
+			} else {
+				counter = counter + 1;
+			}
+		
+		}
+	
+          // center the globe to the position
+          //globe.center(data);
+          //setTimeout(function() {
+            //globe.addBlock(data);
+         // }, 300);
+          //Create animation moving ISS(its not a very fliud animation for now)
+          //globe.removeAllBlocks();
+       });
+      }
+	  
+	  
+	  
+	 
+	  //trackIss();
+	  trackIss();
+      setInterval(trackIss, 60000);
+      
+    </script>
+  </body>
+</html>
