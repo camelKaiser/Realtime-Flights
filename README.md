@@ -1,6 +1,7 @@
 ##Capital One Summit Application for Software Engineers Submission##
 
 [Live Demo with AWS](http://flight-globe.com.s3-website-us-east-1.amazonaws.com/)
+
 [Also hosted on gh pages](https://camelkaiser.github.io/Realtime-Flights/)
 
 The original challenge can be found here: https://www.mindsumo.com/contests/global-data-visualization
