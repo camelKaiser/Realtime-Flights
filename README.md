@@ -2,11 +2,11 @@
 
 [Live Demo with AWS](http://flight-globe.com.s3-website-us-east-1.amazonaws.com/)
 
-[Also hosted on gh pages](https://camelkaiser.github.io/Realtime-Flights/)
+[Also hosted on gh pages](https://camelkaiser.github.io/Realtime-Flights/) (Used to test active changes)
 
 The original challenge can be found here: https://www.mindsumo.com/contests/global-data-visualization
 
-A data visualization of realtime plane flights on a physical globe. The plane flights refresh every minute (please allow up to a minute to initially load). It is currently hosted on github pages and uses a CORS proxy to access the data.
+A data visualization of realtime plane flights and airports on a physical globe. The plane flights refresh every minute (please allow up to a minute to initially load). It is currently hosted on github pages and uses a CORS proxy to access the data.
 
 Thanks to:
 * [Crossorigin.me](https://www.chromeexperiments.com/globe) for providing a working CORS proxy and saving me a ton of grief
