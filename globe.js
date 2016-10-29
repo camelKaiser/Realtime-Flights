@@ -182,8 +182,14 @@ var Globe = function Globe(container, urls) {
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshLambertMaterial({color: color})
       );
-    }
+    },
 
+	port: function(color) {
+      return new THREE.Mesh(
+        new THREE.BoxGeometry(1,1,2),
+        new THREE.MeshLambertMaterial({color: color})
+      );
+    }
   }
 
   // Keep track of mouse positions
@@ -402,13 +408,13 @@ var Globe = function Globe(container, urls) {
   // space just below the earths surface
   var createAirport = function(properties) {
     // create mesh
-    var block = createMesh.block(properties.color);
+    var block = createMesh.port(properties.color);
 
     // calculate 2d position
     var pos2d = calculate2dPosition(properties);
 
     // add altitute
-    pos2d.altitude = 200 + properties.size / 2;
+    pos2d.altitude = 200 + properties.size/2;
 
     // calculate 3d position
     set3dPosition(block, pos2d);

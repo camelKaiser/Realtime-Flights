@@ -41,9 +41,9 @@
       // start it
       globe.init();
   
-    var trackIss = function() {
+    var trackFlights = function() {
 		
-      //get data from ISS tracking api
+      //get data from flightradar
       $.getJSON("https://crossorigin.me/https://data.flightradar24.com/zones/fcgi/feed.js?", function(coords) {
         globe.removeAllBlocks();
 		console.log("fuarkkk");
@@ -57,7 +57,7 @@
 				
 				var data = {
 					color: '#FF0000',
-					size: 3,
+					size: 2,
 					lat: coords[key][1],
 					lon: coords[key][2],
 					};
@@ -70,22 +70,40 @@
 		
 		}
 	
-          // center the globe to the position
-          //globe.center(data);
-          //setTimeout(function() {
-            //globe.addBlock(data);
-         // }, 300);
-          //Create animation moving ISS(its not a very fliud animation for now)
-          //globe.removeAllBlocks();
+          
+       });
+      }
+	  
+	
+	var addAirports = function() {
+		
+      //get data from flightradar
+      $.getJSON("airports.json", function(coords) {
+       
+		var rows = coords.rows;
+		
+		for (var i = 0; i < rows.length; i++) {
+			console.log(rows[i].lat);
+			var data = {
+					color: '#3b7230',
+					size: 2,
+					lat: rows[i].lat,
+					lon: rows[i].lon,
+					};
+			globe.addPort(data);
+		
+		}
+		
+	
+          
        });
       }
 	  
 	  
 	  
-	 
-	  //trackIss();
-	  trackIss();
-      setInterval(trackIss, 60000);
+	 addAirports();
+	  trackFlights();
+      setInterval(trackFlights, 60000);
       
     </script>
   </body>
