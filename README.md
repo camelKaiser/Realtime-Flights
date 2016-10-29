@@ -7,6 +7,7 @@ A data visualization of realtime plane flights and airports on a physical globe.
 [Live Demo with AWS](http://flight-globe.com.s3-website-us-east-1.amazonaws.com/)
 
 [Also hosted on gh pages](https://camelkaiser.github.io/Realtime-Flights/) (Used to test active changes)
+
 A (very) rough [demo and overview](https://youtu.be/3FCsDLWWSLo)
 The original challenge can be found here: https://www.mindsumo.com/contests/global-data-visualization
 
