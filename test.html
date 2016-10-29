@@ -8,9 +8,16 @@ $(document).ready(function(){
     $("button").click(function(){
 		console.log("fuark");
 		console.log("hehe");
-        $.getJSON("https://crossorigin.me/https://data.flightradar24.com/zones/fcgi/feed.js?", function(result){
+        $.getJSON("airports.json", function(result){
             //$.each(result, function(i, field){
-			var time = result.time;
+			var time = result.version;
+			$("div").append(time);
+			var rows = result.rows;
+		
+			for (var i = 0; i < rows.length; i++) {
+				$("div").append("lat " + rows[i].lat + " long " + rows[i].lon + "<br>");
+			}
+			/*
 			var counter = 0;
 			//ar states = result.states;
 			for( var key in result) {
@@ -26,7 +33,7 @@ $(document).ready(function(){
 			
 		    
 				
-				
+				*/
             //});
         });
     });

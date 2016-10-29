@@ -39,6 +39,8 @@ var Globe = function Globe(container, urls) {
   // holds all block references
   var blocks = [];
 
+  //
+  var airports = [];
   // What gets exposed by calling:
   // 
   //    var globe = [new] Globe(div, urls);
@@ -379,6 +381,33 @@ var Globe = function Globe(container, urls) {
     var pos2d = calculate2dPosition(properties);
 
     // add altitute
+    pos2d.altitude = 215;
+
+    // calculate 3d position
+    set3dPosition(block, pos2d);
+
+    // rotate towards earth
+    block.lookAt(earthPosition);
+
+    block.scale.z = properties.size;
+    block.scale.x = properties.size;
+    block.scale.y = properties.size;
+
+    block.updateMatrix();
+    
+    return block;
+  }
+  
+  // Create a block mesh and set its position in 3d
+  // space just below the earths surface
+  var createAirport = function(properties) {
+    // create mesh
+    var block = createMesh.block(properties.color);
+
+    // calculate 2d position
+    var pos2d = calculate2dPosition(properties);
+
+    // add altitute
     pos2d.altitude = 200 + properties.size / 2;
 
     // calculate 3d position
@@ -529,6 +558,26 @@ var Globe = function Globe(container, urls) {
 
     return this;
   }
+  
+  /**
+   * Adds an airport to the globe.
+   *
+   * @param  {Object} data
+   * @param  {Float} data.lat - latitute position
+   * @param  {Float} data.lon - longtitute position
+   * @param  {Float} data.size - size of the block
+   * @param  {String} data.color - color of the block
+   * @return {this}
+   */
+  api.addPort = function(data) {
+    var block = createAirport(data);
+
+    scene.add(block);
+    airports.push(block);
+
+    return this;
+  }
+  
   /**
    * Remove all blocks from the globe.
    * 
@@ -536,6 +585,7 @@ var Globe = function Globe(container, urls) {
    */
   api.removeAllBlocks = function() {
     blocks.forEach(function(block) {
+	
       scene.remove(block);  
     });
 
