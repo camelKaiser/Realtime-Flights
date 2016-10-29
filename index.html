@@ -45,13 +45,13 @@
 		
       //get data from flightradar
       $.getJSON("https://crossorigin.me/https://data.flightradar24.com/zones/fcgi/feed.js?", function(coords) {
-        globe.removeAllBlocks();
-		console.log("fuarkkk");
-		var counter = 0;
+        globe.removeAllBlocks(); //clear old data
+		
+		var counter = 0;         //use the counter to skip the data we don't want
 		for (var key in coords) {
-			console.log("fuarkkk22222");
+			
 			if (counter > 2) {
-				var latitude = coords[key][1];
+				var latitude = coords[key][1];                 //add each flight
 				var longitude = coords[key][2];
 				console.log(latitude + " " + longitude);
 				
@@ -77,12 +77,12 @@
 	
 	var addAirports = function() {
 		
-      //get data from flightradar
+      //get data from local json of airports (downloaded 10/29/2016 from flightradar)
       $.getJSON("airports.json", function(coords) {
        
 		var rows = coords.rows;
 		
-		for (var i = 0; i < rows.length; i++) {
+		for (var i = 0; i < rows.length; i++) { //loop thru airports, adding to globe
 			console.log(rows[i].lat);
 			var data = {
 					color: '#3b7230',
@@ -101,9 +101,9 @@
 	  
 	  
 	  
-	 addAirports();
-	  trackFlights();
-      setInterval(trackFlights, 60000);
+	 addAirports(); //add airports
+	  trackFlights(); //track flights
+      setInterval(trackFlights, 60000); //continue tracking every minute
       
     </script>
   </body>
