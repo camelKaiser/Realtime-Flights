@@ -6,7 +6,7 @@
 
 The original challenge can be found here: https://www.mindsumo.com/contests/global-data-visualization
 
-![alt text](https://github.com/camelKaiser/Realtime-Flights/blob/master/example.png =250x250 "Green Airports, Red Planes")
+![alt text](https://github.com/camelKaiser/Realtime-Flights/blob/master/example.png "Green Airports, Red Planes"){ width: 200px; }
 
 A data visualization of realtime plane flights and airports on a physical globe. The plane flights refresh every minute (please allow up to a minute to initially load). It is currently hosted on github pages and uses a CORS proxy to access the data.
 
