@@ -8,8 +8,6 @@ A data visualization of realtime plane flights and airports on a physical globe.
 
 [Also hosted on gh pages](https://camelkaiser.github.io/Realtime-Flights/) (Used to test active changes)
 
-A (very) rough [demo and overview](https://youtu.be/3FCsDLWWSLo)
-
 The original challenge can be found here: https://www.mindsumo.com/contests/global-data-visualization
 
 Made with:
